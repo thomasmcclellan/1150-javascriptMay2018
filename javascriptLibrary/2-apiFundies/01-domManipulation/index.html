@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Manipulation</title>
+  </head>
+  <body>
+    <p id="testParagraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, ea beatae dolorum saepe quaerat nostrum aliquid. Inventore sapiente vero numquam eaque tempore alias mollitia odit pariatur repellat! Porro, ut officiis!</p>
+
+    <p class="sampleClass">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta repellendus nostrum unde, voluptate earum asperiores quaerat, tempore aliquam, in ex porro exercitationem vel corporis doloremque accusantium autem illo culpa! Veniam.</p>
+
+    <button id="clickThisButton">Click it, I DARE YOU...</button>
+
+    <label for="nameInput">Enter Name Here:</label>
+    <input type="text" id="nameInput" placeholder="Aaron Williamson">
+
+    <script>
+      // Javascript goes here!
+      // var x = 10;
+      // console.log('I promise, this is JS!', x);
+
+      document.getElementById('testParagraph').style.color = 'blue';
+      console.log(document.getElementById('testParagraph').style.color = 'blue');
+
+      console.log(document.querySelectorAll('p.sampleClass')[0].innerText = 'NO ONE GETS A STICKER!');
+
+      var changeColor = false;
+
+      document.getElementById('clickThisButton').addEventListener('click', (details) => {
+        console.log('I was clicked!', details);
+        if (changeColor == false) {
+          details.target.style.backgroundColor = 'red';
+          changeColor = true;
+        } else {
+          details.target.style.backgroundColor = 'blue';
+          changeColor = false;
+        }
+      });
+
+      document.getElementById('nameInput').addEventListener('keyup', (event) => {
+        console.log(event.target.value);
+        console.log(document.getElementsByTagName('p'));
+        if (event.target.value === '') {
+          document.getElementsByTagName('p')[1].innerText = 'NO ONE GETS A STICKER!';
+        } else {
+          document.getElementsByTagName('p')[1].innerText = `Aaron, please give a sticker to ${event.target.value} right now!`;
+        }
+      })
+    </script>
+  </body>
+</html>
